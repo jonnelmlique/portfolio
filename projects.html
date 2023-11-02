@@ -3,42 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>Projects</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/styles.css">
 
 </head>
 
-<body class="bg-white dark:bg-gray-800 text-gray-800 dark:text-white">
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white font-sans">
 
-    <header class="p-4 bg-blue-500 text-white">
-        <div class="container mx-auto">
-
-            <nav class="flex justify-between items-center hidden md:flex">
-                <div class="flex items-center">
-                    <img src="./Images/coding.png" alt="Logo" class="w-10 h-10 mr-4">
-                    <h1 class="text-2xl font-bold">Portfolio</h1>
-                </div>
-                <ul class="flex space-x-4">
-                    <li><a class="hover:underline" href="./index.html">Home</a></li>
-                    <li><a class="hover:underline" href="./about.html">About</a></li>
-                    <li><a class="hover:underline" href="./projects.html">Projects</a></li>
-                    <li><a class="hover:underline" href="./contact.html">Contact</a></li>
-                    
-                </ul>
-            </nav>
-            
-
-            <div class="md:hidden flex items-center">
-                <button id="menu-toggle" class="p-2 md:hidden text-white">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
+    <header class="bg-blue-500 text-white py-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="./Images/coding.png" alt="Logo" class="w-10 h-10 mr-4">
+                <h1 class="text-2xl font-bold">Portfolio</h1>
             </div>
+            <ul class="flex space-x-4">
+                <li><a class="hover:underline" href="./index.html">Home</a></li>
+                <li><a class="hover:underline" href="./about.html">About</a></li>
+                <li><a class="hover:underline" href="./projects.html">Projects</a></li>
+                <li><a class="hover:underline" href="./contact.html">Contact</a></li>
+            </ul>
+            <button id="menu-toggle" class="p-2 md:hidden text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
         </div>
     </header>
-
 
     <div id="mobile-menu" class="hidden md:hidden">
         <ul class="bg-blue-500 text-white text-center py-4">
@@ -49,90 +40,20 @@
         </ul>
     </div>
 
-
-    <script>
-        document.getElementById('menu-toggle').addEventListener('click', function() {
-            var mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('hidden');
-        });
-    </script>
-    
     <main class="container mx-auto p-8">
 
-        <section class="my-8 bg-white dark:bg-gray-800 rounded-md shadow-md p-6">
-          
-            <section class="my-8 bg-white dark:bg-gray-800 rounded-md shadow-md p-6">
-                <div class="bg-yellow-100 p-4 mb-4 rounded-md shadow-md text-yellow-800">
+        <section class="my-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+            <section class="my-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+                <div class="bg-yellow-100 p-4 mb-4 rounded-lg shadow-lg text-yellow-800">
                     This website is under development. Some features may not be available yet.
                 </div>
                 <h2 class="text-3xl font-semibold mb-4 text-blue-500">Projects Gallery</h2>
             </section>
-    
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                <!-- Example project cards -->
-                <div class="border p-4 rounded-md shadow-md bg-white dark:bg-gray-800 group hover:shadow-lg transition-transform transform-gpu hover:scale-105 relative">
-                    <div class="relative group flex items-center justify-center">
-                        <img src="./Images/coding.png" alt="Project 1" class="w-full h-64">
-                    </div>
-                    <h3 class="text-xl font-semibold my-2">Project 1</h3>
-                    <p class="text-gray-700">
-                        Description of your project. Lorem ipsum dolor sit amet, consectetur adipiscing elit. This is a longer description that showcases the card's design.
-                    </p>
-                </div>
-    
-                <div class="border p-4 rounded-md shadow-md bg-white dark:bg-gray-800 group hover:shadow-lg transition-transform transform-gpu hover:scale-105 relative">
-                    <div class="relative group flex items-center justify-center">
-                        <img src="./Images/coding.png" alt="Project 2" class="w-full h-64">
-                    </div>
-                    <h3 class="text-xl font-semibold my-2">Project 2</h3>
-                    <p class="text-gray-700">
-                        Description of your project. Lorem ipsum dolor sit amet, consectetur adipiscing elit. This is a longer description that showcases the card's design.
-                    </p>
-                </div>
-    
-                <div class="border p-4 rounded-md shadow-md bg-white dark:bg-gray-800 group hover:shadow-lg transition-transform transform-gpu hover:scale-105 relative">
-                    <div class="relative group flex items-center justify-center">
-                        <img src="./Images/coding.png" alt="Project 3" class="w-full h-64">
-                    </div>
-                    <h3 class="text-xl font-semibold my-2">Project 3</h3>
-                    <p class="text-gray-700">
-                        Description of your project. Lorem ipsum dolor sit amet, consectetur adipiscing elit. This is a longer description that showcases the card's design.
-                    </p>
-                </div>
-    
 
-                <div class="border p-4 rounded-md shadow-md bg-white dark:bg-gray-800 group hover:shadow-lg transition-transform transform-gpu hover:scale-105 relative">
-                    <div class="relative group flex items-center justify-center">
-                        <img src="./Images/coding.png" alt="Project 1" class="w-full h-64">
-                    </div>
-                    <h3 class="text-xl font-semibold my-2">Project 1</h3>
-                    <p class="text-gray-700">
-                        Description of your project. Lorem ipsum dolor sit amet, consectetur adipiscing elit. This is a longer description that showcases the card's design.
-                    </p>
-                </div>
-    
-                <div class="border p-4 rounded-md shadow-md bg-white dark:bg-gray-800 group hover:shadow-lg transition-transform transform-gpu hover:scale-105 relative">
-                    <div class="relative group flex items-center justify-center">
-                        <img src="./Images/coding.png" alt="Project 2" class="w-full h-64">
-                    </div>
-                    <h3 class="text-xl font-semibold my-2">Project 2</h3>
-                    <p class="text-gray-700">
-                        Description of your project. Lorem ipsum dolor sit amet, consectetur adipiscing elit. This is a longer description that showcases the card's design.
-                    </p>
-                </div>
-    
-                <div class="border p-4 rounded-md shadow-md bg-white dark:bg-gray-800 group hover:shadow-lg transition-transform transform-gpu hover:scale-105 relative">
-                    <div class="relative group flex items-center justify-center">
-                        <img src="./Images/coding.png" alt="Project 3" class="w-full h-64">
-                    </div>
-                    <h3 class="text-xl font-semibold my-2">Project 3</h3>
-                    <p class="text-gray-700">
-                        Description of your project. Lorem ipsum dolor sit amet, consectetur adipiscing elit. This is a longer description that showcases the card's design.
-                    </p>
-                </div>
-    
-            </section>
-      
+            <div id="project-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Dynamic project cards will be inserted here -->
+            </div>
+        </section>
     </main>
 
     <footer class="bg-blue-500 text-white p-4">
@@ -141,5 +62,9 @@
         </div>
     </footer>
 
+
+    <script src="./js/project.js"></script>
+
+  
 </body>
 </html>
