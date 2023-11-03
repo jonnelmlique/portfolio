@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="./dist/css/styles.css">
+    <link rel="stylesheet" href="./dist/css/output.css"> 
+</head>
+
+<body class="bg-white dark:bg-gray-800 text-gray-800 dark:text-white">
+
+    <header class="p-4 bg-blue-500 text-white">
+        <div class="container mx-auto">
+
+            <nav class="flex justify-between items-center hidden md:flex">
+                <div class="flex items-center">
+                    <img src="./Images/coding.png" alt="Logo" class="w-10 h-10 mr-4">
+                    <h1 class="text-2xl font-bold">Portfolio</h1>
+                </div>
+                <ul class="flex space-x-4">
+                    <li><a class="hover:underline" href="./index.html">Home</a></li>
+                    <li><a class="hover:underline" href="./about.html">About</a></li>
+                    <li><a class="hover:underline" href="./projects.html">Projects</a></li>
+                    <li><a class="hover:underline" href="./contact.html">Contact</a></li>
+                    
+                </ul>
+            </nav>
+            
+
+            <div class="md:hidden flex items-center">
+                <button id="menu-toggle" class="p-2 md:hidden text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+
+    <div id="mobile-menu" class="hidden md:hidden">
+        <ul class="bg-blue-500 text-white text-center py-4">
+            <li><a class="block py-2 hover:underline" href="./index.html">Home</a></li>
+            <li><a class="block py-2 hover:underline" href="./about.html">About</a></li>
+            <li><a class="block py-2 hover:underline" href="./projects.html">Projects</a></li>
+            <li><a class="block py-2 hover:underline" href="./contact.html">Contact</a></li>
+        </ul>
+    </div>
+
+
+    <script>
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            var mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+    
+    <main class="container mx-auto p-8">
+    
+        <section class="my-8 bg-white dark-bg-gray-800 rounded-md shadow-md p-6">
+            <div class="bg-yellow-100 p-4 mb-4 rounded-md shadow-md text-yellow-800">
+                <p class="text-sm font-semibold">This website is under development. Some features may not be available yet.</p>
+            </div>
+            
+            <h2 class="text-3xl font-semibold text-blue-500 mb-4">Project Details</h2>
+            <div class="text-xl font-semibold text mb-4 text-center" id="project-title" style="color: black;"></div>
+            <div class="text-xl font-semibold text-black" id="project-title"></div>
+            <img src="" alt="Project Image" class="w-full h-64 object-cover rounded-t-lg" id="project-image">
+            <p id="project-description" class="text-gray-700 mt-4"></p>
+            
+        </section>
+    </main>
+    
+    
+    
+
+    <footer class="bg-blue-500 text-white p-4">
+        <div class="container mx-auto text-center">
+            &copy; <script>document.write(new Date().getFullYear())</script> jonnelmlique. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="./js/details.js"></script>
+    <script src="./js/project.js"></script>
+
+</body>
+</html>
