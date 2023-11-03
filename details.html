@@ -3,31 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Portfolio</title>
+    <title>Details</title>
     <link rel="stylesheet" href="./dist/css/styles.css">
-    <link rel="stylesheet" href="./dist/css/output.css"> 
+    <link rel="stylesheet" href="./dist/css/output.css">
 </head>
 
 <body class="bg-white dark:bg-gray-800 text-gray-800 dark:text-white">
 
-    <header class="p-4 bg-blue-500 text-white">
-        <div class="container mx-auto">
-
-            <nav class="flex justify-between items-center hidden md:flex">
-                <div class="flex items-center">
-                    <img src="./Images/coding.png" alt="Logo" class="w-10 h-10 mr-4">
-                    <h1 class="text-2xl font-bold">Portfolio</h1>
-                </div>
-                <ul class="flex space-x-4">
-                    <li><a class="hover:underline" href="./index.html">Home</a></li>
-                    <li><a class="hover:underline" href="./about.html">About</a></li>
-                    <li><a class="hover:underline" href="./projects.html">Projects</a></li>
-                    <li><a class="hover:underline" href="./contact.html">Contact</a></li>
-                    
-                </ul>
+    <!-- Header -->
+    <header class="bg-blue-500 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="./Images/coding.png" alt="Logo" class="w-10 h-10 mr-4">
+                <h1 class="text-2xl font-bold">Portfolio</h1>
+            </div>
+            <nav class="hidden md:flex space-x-4">
+                <a class="hover:underline" href="./index.html">Home</a>
+                <a class="hover:underline" href="./about.html">About</a>
+                <a class="hover:underline" href="./projects.html">Projects</a>
+                <a class="hover:underline" href="./contact.html">Contact</a>
             </nav>
-            
-
             <div class="md:hidden flex items-center">
                 <button id="menu-toggle" class="p-2 md:hidden text-white">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -38,15 +33,22 @@
         </div>
     </header>
 
-
+    <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden md:hidden">
         <ul class="bg-blue-500 text-white text-center py-4">
             <li><a class="block py-2 hover:underline" href="./index.html">Home</a></li>
             <li><a class="block py-2 hover:underline" href="./about.html">About</a></li>
-            <li><a class="block py-2 hover:underline" href="./projects.html">Projects</a></li>
+            <li><a class "block py-2 hover:underline" href="./projects.html">Projects</a></li>
             <li><a class="block py-2 hover:underline" href="./contact.html">Contact</a></li>
         </ul>
     </div>
+
+    <script>
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            var mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
 
 
     <script>
