@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About</title>
-
-    <link rel="stylesheet" href="./css/styles.css">
-    <link rel="stylesheet" href="./css/output.css"> 
-
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="./dist/css/styles.css">
+    <link rel="stylesheet" href="./dist/css/output.css"> 
 </head>
 
 <body class="bg-white dark:bg-gray-800 text-gray-800 dark:text-white">
@@ -59,23 +57,43 @@
     </script>
     
     <main class="container mx-auto p-8">
+
         <section class="my-8 bg-white dark:bg-gray-800 rounded-md shadow-md p-6">
-
-        
-
-      
-        <div class="text-center">
-            <img src="./Images/coding.png" alt="Your Profile Image" class="w-32 h-32 mx-auto rounded-full mb-4">
+            <div class="bg-yellow-100 p-4 mb-4 rounded-md shadow-md text-yellow-800">
+                This website is under development. Some features may not be available yet.
+            </div>
             <h2 class="text-3xl font-semibold mb-4 text-blue-500">About Me</h2>
-            <p class="text-white-700">
-                Hi, I'm Jonnel M. Lique. I'm passionate about web development and love to create amazing web experiences. I'm always eager to learn new technologies and stay updated with the latest trends in the field.
+            <div class="flex items-center mb-4">
+                <a href="https://github.com/jonnelmlique" target="_blank" rel="noopener noreferrer">
+                    <div class="w-16 h-16 mr-4 cursor-pointer">
+                        <img src="./Images/Github.png" alt="GitHub Logo" class="w-16 h-16">
+                    </div>
+                </a>
+                <p class="text-white-700">
+                    Hi Everyone! I'm Jonnel M. Lique. What I love most about web development is the continuous learning and problem-solving aspect. I'm always eager to explore new technologies and stay updated with the latest trends in the field.
 
-                When I'm not coding, you can find me exploring new places, taking photos, trading, or working on exciting open-source projects. Feel free to explore my portfolio to see some of my work.
-
-                You can contact me at <a class="text-blue-500 hover:underline" href="mailto:your.email@example.com">your.email@example.com</a>.
-            </p>
-        </div>
+                    Outside of coding, I enjoy gaming, photography, and contributing to open-source projects. Feel free to explore my portfolio to see some of the exciting projects I've worked on.
+                </p>
+            </div>
         </section>
+
+
+     
+        
+        <h2 class="text-3xl font-semibold mb-4 text-blue-500">
+            <a href="./projects.html">Projects</a>
+        </h2>
+                    <div id="project-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+            </div>
+
+        <!--  <section class="my-8">
+            <h2 class="text-2xl font-semibold">Contact Me</h2>
+            <p class="text-gray-700">
+                You can reach me at <a class="text-blue-500 hover:underline" href="mailto:your.email@example.com">your.email@example.com</a>.
+            </p>
+        </section> -->
+
     </main>
 
     <footer class="bg-blue-500 text-white p-4">
@@ -83,6 +101,9 @@
             &copy; <script>document.write(new Date().getFullYear())</script> jonnelmlique. All rights reserved.
         </div>
     </footer>
+
+    <script src="./js/project.js"></script>
+
 
 </body>
 </html>
