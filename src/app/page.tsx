@@ -42,7 +42,7 @@ const projectLinks = {
   },
   project2: {
     github: 'https://github.com/jonnelmlique/MedLinkup',
-    live: 'github.com/jonnelmlique'
+    live: 'https://github.com/jonnelmlique'
   },
   project3: {
     github: 'https://github.com/jonnelmlique/StellarGrades',
