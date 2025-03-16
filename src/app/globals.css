@@ -24,3 +24,41 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Custom Scrollbar */
+.slim-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(156, 163, 175, 0.3) transparent;
+}
+
+.slim-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.slim-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.slim-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(156, 163, 175, 0.3);
+  border-radius: 20px;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.modal-content {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.modal-content::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
