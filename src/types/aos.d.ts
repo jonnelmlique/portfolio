@@ -11,13 +11,13 @@ declare module 'aos' {
     placement?: string;
   }
 
+  const aosConfig: AosOptions = {
+    // ... your AOS configuration
+  };
+
   function init(options?: AosOptions): void;
   function refresh(): void;
   function refreshHard(): void;
 
-  export default {
-    init,
-    refresh,
-    refreshHard,
-  };
+  export default aosConfig;
 }

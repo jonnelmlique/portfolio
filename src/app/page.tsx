@@ -41,10 +41,6 @@ export default function Portfolio() {
     document.body.style.overflow = 'auto';
   };
 
-  const showSlide = (index: number) => {
-    setCurrentSlide(index);
-  };
-
   const nextSlide = () => {
     if (modalProject) {
       const maxSlides = projectImages[modalProject as keyof typeof projectImages].length;
