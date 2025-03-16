@@ -1,6 +1,6 @@
 'use client';
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // Update project images paths
 const projectImages = {
@@ -16,6 +16,15 @@ const projectImages = {
     '/images/civic/9.png',
     '/images/civic/10.png',
     '/images/civic/11.png',
+  ],
+  project2: [
+    '/images/Medlinkup/1.png',
+    '/images/Medlinkup/2.png',
+    '/images/Medlinkup/3.png',
+    '/images/Medlinkup/4.png',
+    '/images/Medlinkup/5.png',
+    '/images/Medlinkup/6.png',
+    '/images/Medlinkup/7.png'
   ]
 };
 
@@ -24,6 +33,7 @@ export default function Portfolio() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [modalProject, setModalProject] = useState<string | null>(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -60,15 +70,33 @@ export default function Portfolio() {
     transition: 'transform 500ms ease-in-out',
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalScroll = document.documentElement.scrollTop;
+      const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scroll = `${totalScroll / windowHeight * 100}`;
+      setScrollProgress(parseFloat(scroll));
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <div className="bg-gray-50 min-h-screen">
-      {/* Navigation */}
-      <nav className="fixed w-full bg-white/80 backdrop-blur-sm z-40 py-4">
+    <div className="bg-gradient-to-br from-slate-50 to-slate-100 min-h-screen relative">
+      {/* Decorative background elements */}
+      <div className="fixed inset-0 -z-10 overflow-hidden">
+        <div className="absolute -top-1/2 -right-1/2 w-96 h-96 bg-indigo-100 rounded-full blur-3xl opacity-30"></div>
+        <div className="absolute -bottom-1/2 -left-1/2 w-96 h-96 bg-pink-100 rounded-full blur-3xl opacity-30"></div>
+      </div>
+
+      {/* Navigation - Updated with backdrop blur and indicator */}
+      <nav className="fixed w-full bg-white/60 backdrop-blur-md z-40 py-4 border-b border-slate-200/50">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center">
-            <h1 className="text-2xl font-bold text-gray-800">Jonnel</h1>
+            <h1 className="text-2xl font-bold text-slate-800">Jonnel</h1>
             
-            <button onClick={toggleMobileMenu} className="md:hidden p-2 rounded-lg text-gray-600 hover:bg-gray-100">
+            <button onClick={toggleMobileMenu} className="md:hidden p-2 rounded-lg text-slate-600 hover:bg-slate-200">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path className={!isMobileMenuOpen ? "block" : "hidden"} strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
                 <path className={isMobileMenuOpen ? "block" : "hidden"} strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
@@ -77,45 +105,46 @@ export default function Portfolio() {
 
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center space-x-6">
-              <a href="#home" className="text-gray-600 hover:text-blue-500">Home</a>
-              <a href="#skills" className="text-gray-600 hover:text-blue-500">Skills</a>
-              <a href="#work" className="text-gray-600 hover:text-blue-500">Work</a>
-              <a href="#contact" className="text-gray-600 hover:text-blue-500">Contact</a>
+              <a href="#home" className="text-slate-600 hover:text-indigo-500">Home</a>
+              <a href="#skills" className="text-slate-600 hover:text-indigo-500">Skills</a>
+              <a href="#work" className="text-slate-600 hover:text-indigo-500">Work</a>
+              <a href="#contact" className="text-slate-600 hover:text-indigo-500">Contact</a>
             </div>
           </div>
 
           {/* Mobile Menu */}
           <div className={`md:hidden mt-4 pb-4 ${isMobileMenuOpen ? 'block' : 'hidden'}`}>
-            <a href="#home" className="block text-gray-600 hover:text-blue-500">Home</a>
-            <a href="#skills" className="block text-gray-600 hover:text-blue-500">Skills</a>
-            <a href="#work" className="block text-gray-600 hover:text-blue-500">Work</a>
-            <a href="#contact" className="block text-gray-600 hover:text-blue-500">Contact</a>
+            <a href="#home" className="block text-slate-600 hover:text-indigo-500">Home</a>
+            <a href="#skills" className="block text-slate-600 hover:text-indigo-500">Skills</a>
+            <a href="#work" className="block text-slate-600 hover:text-indigo-500">Work</a>
+            <a href="#contact" className="block text-slate-600 hover:text-indigo-500">Contact</a>
           </div>
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section id="home" className="pt-32 pb-20">
-        <div className="container mx-auto px-4">
+      {/* Hero Section - Updated with geometric pattern */}
+      <section id="home" className="pt-32 pb-20 relative overflow-hidden">
+        <div className="absolute inset-0 pattern-grid opacity-5"></div>
+        <div className="container mx-auto px-4 relative">
           <div className="flex flex-col items-center text-center">
-            <div className="w-32 h-32 rounded-full overflow-hidden mb-6" data-aos="fade-down">
-              {/* <Image 
+            <div className="w-32 h-32 rounded-full overflow-hidden mb-6 border-4 border-white shadow-xl" data-aos="fade-down">
+              {/* { <Image 
                 src="/profile.jpg" 
                 alt="Profile" 
                 width={128} 
                 height={128} 
                 className="w-full h-full object-cover"
-              /> */}
+              /> } */}
             </div>
-            <h1 className="text-5xl font-bold text-gray-800 mb-4" data-aos="fade-up">Jonnel Lique</h1>
-            <p className="text-xl text-gray-600 mb-8" data-aos="fade-up" data-aos-delay="100">
+            <h1 className="text-5xl font-bold text-slate-800 mb-4" data-aos="fade-up">Jonnel Lique</h1>
+            <p className="text-xl text-slate-600 mb-8" data-aos="fade-up" data-aos-delay="100">
               Full Stack Developer & UI/UX Designer
             </p>
             <div className="flex gap-4" data-aos="fade-up" data-aos-delay="200">
-              <a href="#work" className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg">
+              <a href="#work" className="bg-indigo-500 hover:bg-indigo-600 text-white px-6 py-3 rounded-lg">
                 View My Work
               </a>
-              <a href="#contact" className="border-2 border-gray-800 text-gray-800 px-6 py-3 rounded-lg hover:bg-gray-800 hover:text-white">
+              <a href="#contact" className="border-2 border-slate-800 text-slate-800 px-6 py-3 rounded-lg hover:bg-slate-800 hover:text-white">
                 Contact Me
               </a>
             </div>
@@ -123,19 +152,23 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* Skills Section */}
-      <section id="skills" className="py-20 bg-white">
+      {/* Skills Section - Updated cards with glass effect */}
+      <section id="skills" className="py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-gray-800 mb-12" data-aos="fade-up">Skills</h2>
+          <h2 className="text-3xl font-bold text-center text-slate-800 mb-12" data-aos="fade-up">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-pink-500">
+              Skills & Expertise
+            </span>
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {/* Frontend Card */}
-            <div className="bg-gray-50 p-6 rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+            <div className="bg-white/40 backdrop-blur-sm p-6 rounded-xl border border-white/20 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
               data-aos="fade-up">
-              <h3 className="text-xl font-bold text-gray-800 mb-4 border-b border-gray-200 pb-2">
+              <h3 className="text-xl font-bold text-slate-800 mb-4 border-b border-slate-200 pb-2">
                 Frontend</h3>
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-700">HTML/CSS</span>
+                  <span className="text-slate-700">HTML/CSS</span>
                   <svg className="w-6 h-6 text-orange-500 transform transition-transform duration-300 hover:scale-125 hover:rotate-12"
                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
@@ -143,7 +176,7 @@ export default function Portfolio() {
                   </svg>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-700">JavaScript</span>
+                  <span className="text-slate-700">JavaScript</span>
                   <svg className="w-6 h-6 text-yellow-400 transform transition-transform duration-300 hover:scale-125 hover:-rotate-12"
                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
@@ -151,24 +184,25 @@ export default function Portfolio() {
                   </svg>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-700">Tailwind/Bootstrap</span>
+                  <span className="text-slate-700">Tailwind/Bootstrap</span>
                   <svg className="w-6 h-6 text-teal-500 transform transition-transform duration-300 hover:scale-125 hover:rotate-180"
                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
                       d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
                   </svg>
                 </div>
+                
               </div>
             </div>
 
             {/* Backend Card */}
-            <div className="bg-gray-50 p-6 rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+            <div className="bg-white/40 backdrop-blur-sm p-6 rounded-xl border border-white/20 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
               data-aos="fade-up" data-aos-delay="100">
-              <h3 className="text-xl font-bold text-gray-800 mb-4 border-b border-gray-200 pb-2">
+              <h3 className="text-xl font-bold text-slate-800 mb-4 border-b border-slate-200 pb-2">
                 Backend</h3>
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-700">PHP/Laravel</span>
+                  <span className="text-slate-700">PHP/Laravel</span>
                   <svg className="w-6 h-6 text-red-500 transform transition-transform duration-300 hover:scale-125 hover:rotate-45"
                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
@@ -176,7 +210,7 @@ export default function Portfolio() {
                   </svg>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-700">Node.js</span>
+                  <span className="text-slate-700">Node.js</span>
                   <svg className="w-6 h-6 text-green-500 transform transition-transform duration-300 hover:scale-125 hover:-rotate-45"
                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
@@ -184,7 +218,7 @@ export default function Portfolio() {
                   </svg>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-700">MySQL</span>
+                  <span className="text-slate-700">MySQL</span>
                   <svg className="w-6 h-6 text-blue-500 transform transition-transform duration-300 hover:scale-125 hover:rotate-360"
                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
@@ -195,13 +229,13 @@ export default function Portfolio() {
             </div>
 
             {/* Tools Card */}
-            <div className="bg-gray-50 p-6 rounded-xl shadow-lg transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+            <div className="bg-white/40 backdrop-blur-sm p-6 rounded-xl border border-white/20 shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
               data-aos="fade-up" data-aos-delay="200">
-              <h3 className="text-xl font-bold text-gray-800 mb-4 border-b border-gray-200 pb-2">
+              <h3 className="text-xl font-bold text-slate-800 mb-4 border-b border-slate-200 pb-2">
                 Tools & Others</h3>
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-700">Git</span>
+                  <span className="text-slate-700">Git</span>
                   <svg className="w-6 h-6 text-orange-600 transform transition-transform duration-300 hover:scale-125 hover:rotate-12"
                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
@@ -209,7 +243,7 @@ export default function Portfolio() {
                   </svg>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-700">Docker</span>
+                  <span className="text-slate-700">Docker</span>
                   <svg className="w-6 h-6 text-blue-600 transform transition-transform duration-300 hover:scale-125 hover:-rotate-12"
                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
@@ -217,7 +251,7 @@ export default function Portfolio() {
                   </svg>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-gray-700">UI/UX Design</span>
+                  <span className="text-slate-700">UI/UX Design</span>
                   <svg className="w-6 h-6 text-pink-500 transform transition-transform duration-300 hover:scale-125 hover:rotate-45"
                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
@@ -226,22 +260,54 @@ export default function Portfolio() {
                 </div>
               </div>
             </div>
+
+
+            
           </div>
         </div>
       </section>
 
-      {/* Work Section */}
-      <section id="work" className="py-20 bg-gray-100">
+      {/* Work Section - Updated project cards */}
+      <section id="work" className="py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-gray-800 mb-12" data-aos="fade-up">Recent Work</h2>
+          <h2 className="text-3xl font-bold text-center text-slate-800 mb-12" data-aos="fade-up">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-500 to-pink-500">
+              Recent Work
+            </span>
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div onClick={() => openModal('project1')}
-              className="bg-white rounded-xl overflow-hidden shadow-lg cursor-pointer transform transition hover:scale-105"
+              className="group bg-white/40 backdrop-blur-sm rounded-xl overflow-hidden border border-white/20 shadow-lg hover:shadow-2xl transition-all duration-300"
               data-aos="fade-up">
-              <Image src="/images/civic/1.png" alt="Project" width={400} height={300} className="w-full h-48 object-cover" />
+              <div className="relative overflow-hidden">
+                <Image src="/images/civic/1.png" alt="Project" width={400} height={300} 
+                  className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-4 left-4 text-white">
+                    <p className="text-sm">Click to view details</p>
+                  </div>
+                </div>
+              </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-gray-800 mb-2">IT Asset Management</h3>
-                <p className="text-gray-600">Click to view more details</p>
+                <h3 className="text-xl font-bold text-slate-800 mb-2">IT Asset Management</h3>
+                <p className="text-slate-600">A comprehensive system for managing IT assets</p>
+              </div>
+            </div>
+            <div onClick={() => openModal('project2')}
+              className="group bg-white/40 backdrop-blur-sm rounded-xl overflow-hidden border border-white/20 shadow-lg hover:shadow-2xl transition-all duration-300"
+              data-aos="fade-up" data-aos-delay="100">
+              <div className="relative overflow-hidden">
+                <Image src="/images/Medlinkup/1.png" alt="Project" width={400} height={300} 
+                  className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-4 left-4 text-white">
+                    <p className="text-sm">Click to view details</p>
+                  </div>
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-slate-800 mb-2">Medlinkup</h3>
+                <p className="text-slate-600">A comprehensive platform designed to streamline medical inventory, sales, and order management.</p>
               </div>
             </div>
           </div>
@@ -250,18 +316,18 @@ export default function Portfolio() {
 
       {/* Project Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black/30 backdrop-blur-sm z-50 overflow-y-auto slim-scrollbar">
+        <div className="fixed inset-0 bg-slate-900/30 backdrop-blur-sm z-50 overflow-y-auto slim-scrollbar">
           <div className="min-h-screen px-4 text-center">
             {/* Modal Backdrop - Remove or adjust opacity */}
             <div className="fixed inset-0 transition-opacity" aria-hidden="true">
-              <div className="absolute inset-0 bg-gray-500/20"></div>
+              <div className="absolute inset-0 bg-slate-500/20"></div>
             </div>
 
             {/* Modal Content - Add backdrop blur and adjust background opacity */}
             <div className="inline-block w-full max-w-4xl p-6 my-8 text-left align-middle transition-all transform bg-white/90 backdrop-blur-md shadow-xl rounded-2xl max-h-[90vh] overflow-y-auto modal-content">
               {/* Close Button */}
               <button onClick={closeModal}
-                className="absolute top-4 right-4 text-gray-600 hover:text-gray-900">
+                className="absolute top-4 right-4 text-slate-600 hover:text-slate-900">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
@@ -308,38 +374,49 @@ export default function Portfolio() {
 
               {/* Project Details */}
               <div className="mt-6">
-                <h3 className="text-2xl font-bold text-gray-800 mb-4">IT Asset Management</h3>
+                <h3 className="text-2xl font-bold text-slate-800 mb-4">
+                  {modalProject === 'project1' ? 'IT Asset Management' : 'Medlinkup'}
+                </h3>
                 <div className="space-y-4">
                   <div>
-                    <h4 className="text-lg font-semibold text-gray-700">Description</h4>
-                    <p className="text-gray-600">
-                      A comprehensive system for managing IT assets, tracking inventory, and monitoring equipment lifecycle.
+                    <h4 className="text-lg font-semibold text-slate-700">Description</h4>
+                    <p className="text-slate-600">
+                      {modalProject === 'project1' 
+                        ? 'A comprehensive system for managing IT assets, tracking inventory, and monitoring equipment lifecycle.'
+                        : 'A comprehensive platform designed to streamline medical inventory, sales, and order management.'}
                     </p>
                   </div>
 
                   <div>
-                    <h4 className="text-lg font-semibold text-gray-700 mt-2">My Role</h4>
+                    <h4 className="text-lg font-semibold text-slate-700 mt-2">My Role</h4>
                     <div className="flex flex-wrap gap-2 mt-2">
-                      <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
+                      <span className="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm">
                         Lead Programmer
                       </span>
-                      <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
+                      <span className="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm">
                         Backend
                       </span>
-                      <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
+                      <span className="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm">
                         Frontend
                       </span>
                     </div>
                   </div>
 
                   <div>
-                    <h4 className="text-lg font-semibold text-gray-700 mt-2">Tools Used</h4>
+                    <h4 className="text-lg font-semibold text-slate-700 mt-2">Tools Used</h4>
                     <div className="flex flex-wrap gap-2 mt-2">
-                      {['PHP', 'MySQL', 'Bootstrap', 'AJAX', 'DigitalOcean', 'Git'].map((tool) => (
-                        <span key={tool} className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">
-                          {tool}
-                        </span>
-                      ))}
+                      {modalProject === 'project1' 
+                        ? ['PHP', 'MySQL', 'Bootstrap', 'AJAX', 'DigitalOcean', 'Git'].map((tool) => (
+                            <span key={tool} className="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm">
+                              {tool}
+                            </span>
+                          ))
+                        : ['PHP', 'MySQL', 'Bootstrap', 'DigitalOcean', 'Git'].map((tool) => (
+                            <span key={tool} className="px-3 py-1 bg-indigo-100 text-indigo-800 rounded-full text-sm">
+                              {tool}
+                            </span>
+                          ))
+                      }
                     </div>
                   </div>
                 </div>
@@ -349,13 +426,13 @@ export default function Portfolio() {
         </div>
       )}
 
-      {/* Contact Section */}
+      {/* Contact Section - Updated with gradient text */}
       <section id="contact" className="py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">Get In Touch</h2>
+          <h2 className="text-3xl font-bold text-center text-slate-800 mb-12">Get In Touch</h2>
           <div className="max-w-2xl mx-auto">
             <div className="flex flex-col space-y-4">
-              <a href="mailto:contact@example.com" className="flex items-center justify-center gap-2 text-gray-600 hover:text-blue-500">
+              <a href="mailto:contact@example.com" className="flex items-center justify-center gap-2 text-slate-600 hover:text-indigo-500">
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
@@ -366,9 +443,15 @@ export default function Portfolio() {
         </div>
       </section>
 
-      <footer className="py-6 text-center text-gray-600">
+      <footer className="py-6 text-center text-slate-600">
         <p>&copy; 2025. All rights reserved.</p>
       </footer>
+
+      {/* Add a scroll progress indicator */}
+      <div className="fixed top-0 left-0 w-full h-1 bg-slate-200 z-50">
+        <div className="h-full bg-gradient-to-r from-indigo-500 to-pink-500" 
+          style={{ width: `${scrollProgress}%` }}></div>
+      </div>
     </div>
   );
 }
